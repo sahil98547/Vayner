@@ -1,0 +1,405 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+
+.typewriter {
+    display: inline-block;
+    border-right: 2px solid orange;
+    /* Blinking cursor */
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 28px;
+    font-family: monospace;
+    padding-right: 5px;
+    animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eaeaea;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #666;
+}
+
+.contact-btn {
+    background: #000;
+    color: white !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: #333;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8rem 2rem 0;
+}
+
+.HeroSection {
+    height: 100%;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+.HeroVideo {
+    height: 400px;
+    width: 400px;
+}
+
+.hero-video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.number-section {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f4f4f4;
+}
+
+.number-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.number-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 150px;
+}
+
+.counter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.number-box p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* Founder Section */
+.founder-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: #fff;
+}
+
+.founder-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.founder-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.founder-info {
+    max-width: 600px;
+    text-align: left;
+}
+
+.founder-info h2 {
+    font-size: 2rem;
+    color: #ff6600;
+}
+
+.founder-info h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.founder-info p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Client Logos */
+.client-logos {
+    width: 100%;
+    padding: 3rem 0;
+    margin-top: auto;
+}
+
+.logo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.client-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.client-logo:hover {
+    filter: grayscale(0%);
+}
+
+/* Circular Seal */
+.circular-seal {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 96px;
+    height: 96px;
+    animation: spin 20s linear infinite;
+}
+
+.seal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* @keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+} */
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .logo-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+        /* You might want to add a mobile menu here */
+    }
+
+    .hero {
+        padding: 6rem 1rem 0;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .circular-seal {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+
+
+/* ----------------------------------------------------------------------------------------------- */
+
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.scroll-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.text-content {
+    max-width: 50%;
+}
+
+.text-content h2 {
+    font-size: 42px;
+    line-height: 45px;
+    margin: 10px 0px;
+}
+
+.text-content p {
+    padding-bottom: 20px;
+}
+
+.btn {
+    background-color: #a855f7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #9333ea;
+}
+
+.image-content video {
+    width: 300px;
+    border-radius: 10px;
+}
+
+
+.image-content {
+    width: 400px;
+    height: 400px;
+}
+
+
+.scroll-section {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    background: #f5f5f5;
+}
+
+.integrated-image-content {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 200px;
+    /* Adjust size as needed */
+    height: 200px;
+    /* Adjust size as needed */
+    animation: rotate 4s linear infinite;
+    /* Smooth infinite rotation */
+}
+
+/* Keyframe animation for rotation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.integrated-image-setting {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
