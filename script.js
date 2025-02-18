@@ -2,36 +2,44 @@ document.addEventListener("DOMContentLoaded", function () {
     // Typewriter effect for the hero section
     const textElement = document.querySelector(".typewriter");
     const texts = ["creative agency.", "media agency."]; // Words to type
+    const colors = ["#ff5733", "#33ff57"]; // Colors for each text
     let currentTextIndex = 0;
     let charIndex = 0;
-    let isDeleting = false;
+    let isDeleting = false;  
 
     function typeEffect() {
-        let currentText = texts[currentTextIndex];
-        let speed = isDeleting ? 50 : 100; // Typing speed (slower) & deleting speed (faster)
+        const currentText = texts[currentTextIndex];
+        const speed = isDeleting ? 10 : 40; // Typing speed (slower) & deleting speed (faster)
 
+        // Update text content
+        textElement.textContent = currentText.substring(0, charIndex);
+        textElement.style.color = colors[currentTextIndex]; // Apply color
+
+        // Increment or decrement character index
         if (isDeleting) {
-            textElement.textContent = currentText.substring(0, charIndex--);
+            charIndex--;
         } else {
-            textElement.textContent = currentText.substring(0, charIndex++);
+            charIndex++;
         }
 
         // When full text is typed, pause and start deleting
         if (!isDeleting && charIndex === currentText.length + 1) {
             isDeleting = true;
-            speed = 1000; // Pause before deleting
+            setTimeout(typeEffect, 1000); // Pause before deleting
         }
         // When text is fully deleted, switch to the next text and start typing again
         else if (isDeleting && charIndex === -1) {
             isDeleting = false;
             currentTextIndex = (currentTextIndex + 1) % texts.length; // Switch to the next word
-            speed = 500; // Pause before retyping
+            setTimeout(typeEffect, 500); // Pause before retyping
         }
-
-        setTimeout(typeEffect, speed);
+        // Continue typing or deleting
+        else {
+            setTimeout(typeEffect, speed);
+        }
     }
 
-    typeEffect(); // Start animation
+    typeEffect(); // Start typewriter animation
 
     // Counter Animation
     function animateCounters() {
@@ -65,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Animate the logo moving across sections
@@ -88,7 +98,7 @@ gsap.timeline({
     });
 
 
-// ----------------------------------------------------------------------------------------------------------
+// ------------------      ----------------------------------------------------------------------------------------
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -104,7 +114,7 @@ scrollSections.forEach((section) => {
 function initScroll(section, items) {
     // Initial states - Hide all except the first
     items.forEach((item, index) => {
-        if (index !== 0) {
+        if (index !== 0 && index !== items.length - 1) {
             gsap.set(item, { yPercent: 100, opacity: 0, position: "absolute", width: "100%" });
         }
     });
@@ -112,7 +122,7 @@ function initScroll(section, items) {
     const timeline = gsap.timeline({
         scrollTrigger: {
             trigger: section,
-            pin: true,
+            pin: section,
             start: "top top",
             end: () => `+=${items.length * 100}%`,
             scrub: 1,
@@ -123,7 +133,7 @@ function initScroll(section, items) {
     });
 
     items.forEach((item, index) => {
-        if (index > 0) {
+        if (index > 0  && index !== items.length - 1) {
             timeline.to(items[index - 1], { opacity: 0, yPercent: -100 }, "<"); // Fully hide previous
         }
         timeline.to(item, { opacity: 1, yPercent: 0 }, "<"); // Show current
@@ -131,12 +141,8 @@ function initScroll(section, items) {
 }
 
 
-
 // ---------------------------------- video start -------------------------------------------
 
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 // Select all sections and their videos
 const sections = document.querySelectorAll(".section");
@@ -157,7 +163,7 @@ sections.forEach((section, index) => {
         end: "bottom top", // When the section leaves the viewport
         onEnter: () => {
             if (video) {
-                video.play(); // Play video when section is in view
+                video.play(); // Play video when section is in 
             }
         },
         onLeave: () => {
@@ -180,3 +186,28 @@ sections.forEach((section, index) => {
     });
 });
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Clone the logos for a seamless loop
+    const carouselTrack = document.querySelector(".carousel-track");
+    const logos = Array.from(carouselTrack.children);
+    
+    // Duplicate logos to ensure smooth looping
+    logos.forEach(logo => {
+        const clone = logo.cloneNode(true);
+        carouselTrack.appendChild(clone);
+    });
+
+    // GSAP animation for infinite scrolling
+    gsap.to(".carousel-track", {
+        x: "-50%", // Moves halfway since we cloned items
+        duration: 10,
+        repeat: -1,
+        ease: "linear"
+    });
+});
+
+
+
+// ----------------------------------------------------------------------------------------------------------------

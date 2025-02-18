@@ -15,11 +15,10 @@ body {
 .typewriter {
     display: inline-block;
     border-right: 2px solid orange;
-    /* Blinking cursor */
     white-space: nowrap;
     overflow: hidden;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 5rem;
     font-family: monospace;
     padding-right: 5px;
     animation: blinkCursor 0.8s infinite;
@@ -99,12 +98,12 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    gap: 15px;
 }
 
 
 .HeroVideo {
-    height: 400px;
-    width: 400px;
+    width: 700px;
 }
 
 .hero-video {
@@ -245,15 +244,6 @@ body {
     object-fit: contain;
 }
 
-/* @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-} */
-
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-title {
@@ -299,9 +289,6 @@ body {
 /* ----------------------------------------------------------------------------------------------- */
 
 
-
-
-
 .container {
     display: flex;
     flex-direction: column;
@@ -311,7 +298,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 60vh;
 }
 
 .wrapper {
@@ -326,6 +313,20 @@ body {
     margin: auto;
     padding: 40px;
     border-radius: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.section-last{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .text-content {
@@ -368,23 +369,13 @@ body {
 }
 
 
-.scroll-section {
-    position: relative;
-    overflow: hidden;
-    height: 100vh;
-    background: #f5f5f5;
-}
-
 .integrated-image-content {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     width: 200px;
-    /* Adjust size as needed */
     height: 200px;
-    /* Adjust size as needed */
     animation: rotate 4s linear infinite;
-    /* Smooth infinite rotation */
 }
 
 /* Keyframe animation for rotation */
@@ -398,8 +389,93 @@ body {
     }
 }
 
-.integrated-image-setting {
+
+
+.horizontal-scroll {
+    position: relative;
+    overflow: hidden;
+    height: 90vh;
+    background: #f5f5f5;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Shadow effect for next section */
+.horizontal-scroll::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------------------  Clients Section  ----------------------------------------------------------- */
+
+.clients-section {
+    text-align: center;
+    padding: 50px 0;
+    background: #f8f8f8;
+    overflow: hidden;
+    position: relative;
+}
+
+.clients-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.clients-carousel {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.carousel-track {
     display: flex;
+    gap: 40px;
+    animation: scrollBrands 15s linear infinite;
+    
+}
+
+.carousel-track img {
+    height: 80px;
+    width: auto;
+    display: inline-block;
+}
+
+.our-offices {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa; /* Light background */
+}
+
+.offices-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    padding-left: 30px;
+}
+
+.map-container iframe {
+    width: 80%;
+    max-width: 1000px;
+    height: 500px;
+    border-radius: 10px;
+    border: none;
 }
