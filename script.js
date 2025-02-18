@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const colors = ["#ff5733", "#33ff57"]; // Colors for each text
     let currentTextIndex = 0;
     let charIndex = 0;
-    let isDeleting = false;  
+    let isDeleting = false;
 
     function typeEffect() {
         const currentText = texts[currentTextIndex];
@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 gsap.registerPlugin(ScrollTrigger);
 
+/*
 // Animate the logo moving across sections
 gsap.timeline({
     scrollTrigger: {
@@ -96,6 +97,29 @@ gsap.timeline({
         rotate: 0,
         duration: 1
     });
+
+    */
+
+
+gsap.timeline({
+    scrollTrigger: {
+        trigger: ".number-section", // Start animation when .number-section appears
+        start: "top top",
+        // endTrigger: ".founders-section", 
+        end: "bottom bottom",
+        scrub: 1,
+        pin: ".vm_logo_image",
+        markers: true
+    }
+})
+    .to(".vm_logo_image", {
+        top: "35%",
+        left: "65%",
+        scale: 1,
+        rotate: 0,
+        duration: 1
+    });
+
 
 
 // ------------------      ----------------------------------------------------------------------------------------
@@ -133,7 +157,7 @@ function initScroll(section, items) {
     });
 
     items.forEach((item, index) => {
-        if (index > 0  && index !== items.length - 1) {
+        if (index > 0 && index !== items.length - 1) {
             timeline.to(items[index - 1], { opacity: 0, yPercent: -100 }, "<"); // Fully hide previous
         }
         timeline.to(item, { opacity: 1, yPercent: 0 }, "<"); // Show current
@@ -192,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clone the logos for a seamless loop
     const carouselTrack = document.querySelector(".carousel-track");
     const logos = Array.from(carouselTrack.children);
-    
+
     // Duplicate logos to ensure smooth looping
     logos.forEach(logo => {
         const clone = logo.cloneNode(true);
