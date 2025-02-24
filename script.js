@@ -100,28 +100,6 @@ gsap.timeline({
 
     */
 
-
-gsap.timeline({
-    scrollTrigger: {
-        trigger: ".number-section", // Start animation when .number-section appears
-        start: "top top",
-        // endTrigger: ".founders-section", 
-        end: "bottom bottom",
-        scrub: 1,
-        pin: ".vm_logo_image",
-        markers: true
-    }
-})
-    .to(".vm_logo_image", {
-        top: "35%",
-        left: "65%",
-        scale: 1,
-        rotate: 0,
-        duration: 1
-    });
-
-
-
 // ------------------      ----------------------------------------------------------------------------------------
 
 // Register ScrollTrigger plugin
@@ -233,5 +211,47 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// --------------------------------------------   VM Logo  ----------------------------------------------------------
 
-// ----------------------------------------------------------------------------------------------------------------
+var t1 = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".number-section",
+        start: "top 45%",
+        end: "bottom right",
+        scrub: 2,  // Increase scrub value for a smoother, slower effect
+        pin: ".vm_logo_image",
+        // markers: true,
+    }
+})
+
+t1.to(".vm_logo_founder_img", {
+    x: 605,
+    y: 195,
+    scale: 1,
+    rotate: 360,
+    duration: 3, // Increase duration for a slower transition
+    ease: "power1.out" // Slower easing effect
+});
+
+
+// gsap.registerPlugin(ScrollTrigger);
+
+let t2 = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".founder-info", 
+        start: "top 30%",
+        end: "bottom center",
+        scrub: 3,
+        markers: true,
+    }
+});
+
+t2.to(".vm_logo_founder_img", {
+    x: 110,
+    y: 560,
+    scale: 1,
+    rotate: 360,
+    duration: 2,
+    ease: "power1.out",
+});
+
